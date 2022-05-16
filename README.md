@@ -14,12 +14,12 @@ docker-compose up -d web adminer
 
 Now create the database table with all of the users by accessing the URL:
 
-http://localhost/create_db_users.php
+http://localhost:8083/create_db_users.php
 
 Check that all of the users were created:
 
-http://localhost/list_users.php
+http://localhost:8083/list_users.php
 
 And now you can open up the main page with a simple form to allow you to search for users:
 
-http://localhost
+http://localhost:8083
