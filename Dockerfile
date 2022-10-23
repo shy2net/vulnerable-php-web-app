@@ -6,3 +6,6 @@ RUN docker-php-ext-install mysqli \
 
 # Copy the source files
 COPY ./src /var/www/html/
+
+# Fix ownership
+RUN chown www-data -R /var/www/html/*
