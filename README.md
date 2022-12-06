@@ -1,7 +1,15 @@
 # Introduction
 
-This is a simple PHP app with a ready to run "sql injection". It simply generates a database called `users`
-with a list of users.
+This is a simple PHP app with a ready to test and play with web vulnerabilities.
+
+This project comes with the following vulnerabilities:
+
+- SQL Injection
+- Blind SQL Injection
+- Header Injection
+- Command Injection
+- Code Injection
+- Authentication bypass injection (using SQL)
 
 ## How to run this project
 

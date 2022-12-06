@@ -1,4 +1,10 @@
 <?php
+
+if (isset($_GET['redirect_query'])) {
+    Header("Location: $_GET[redirect_query]");
+    die("Redirect should be happening here");
+}
+
 require('db.php');
 require('./utils.php');
 ?>
@@ -17,10 +23,18 @@ require('./utils.php');
 
 
     <hr style="margin-bottom: 20px;">
+    <h3>Command injection</h3>
     Want to check for ping? <a href="run_ping.php">Run ping</a>
 
+    <hr style="margin-bottom: 20px;">
+
+    <h3>Authentication bypass</h3>
+    Login with any users you find in this database and password: "password" <p><a href="login.php">Go to Login page</a>
+
+    <hr style="margin-bottom: 20px;">
+
     <form method="GET" style="margin-top: 15px;">
-        <h3>Search for users</h3>
+        <h3>Search for users (SQL Injection)</h3>
 
         Username:
         <input type="text" name="name" />
@@ -70,7 +84,17 @@ require('./utils.php');
         }
         ?>
 
-        </div>
+
+    </form>
+
+    <hr style="margin-bottom: 20px;">
+
+    <form method="GET" style="margin-top: 15px;">
+        <h3>Host header injection</h3>
+
+        Enter a location (url) you want to be redirected into:
+        <input type="text" name="redirect_query" />
+        <input type="submit" value="Submit" />
     </form>
 </body>
 

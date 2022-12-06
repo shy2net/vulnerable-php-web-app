@@ -22,7 +22,7 @@ function print_search_users_results($query, $is_blind) {
     global $db;
 
     $query_param = strtolower($query);
-    $query = "SELECT * FROM users WHERE LOWER(users.name) LIKE '%{$query_param}%'";
+    $query = "SELECT * FROM users WHERE LOWER(users.username) LIKE '%{$query_param}%'";
 
     $results = run_query($query, isset($_GET['name']));
 
@@ -31,7 +31,7 @@ function print_search_users_results($query, $is_blind) {
         echo "No records found";
     else {
         while ($user = $results->fetch_object()) {
-            echo "{$user->name}<br>";
+            echo "{$user->username}<br>";
         }
     }
 
