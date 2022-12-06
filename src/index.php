@@ -1,8 +1,13 @@
+<?php
+require('db.php');
+require('./utils.php');
+?>
+
 <html>
 
 <body>
     <h3>
-        SQL Injection and Code Execution web app
+        Simple vulnerable webapp
     </h3>
 
     <div>
@@ -26,6 +31,10 @@
         </div>
     </form>
 
+    <?php
+    if (isset($_GET['name'])) print_search_users_results($_GET['name'], false);
+    ?>
+
     <hr style="margin-bottom: 20px;">
 
     <form method="GET" style="margin-top: 15px;">
@@ -40,36 +49,34 @@
         </div>
     </form>
 
+    <?php
+    if (isset($_GET['blind_name'])) print_search_users_results($_GET['blind_name'], true);
+    ?>
 
+    <hr style="margin-bottom: 20px;">
 
-    <div class="results" style="border-top: 1px solid black; padding-top: 15px;">
+    <form method="GET" style="margin-top: 15px;">
+        <h3>Code Injection</h3>
+
+        Enter a simple calculation (for example: 5+6):
+        <input type="text" name="eval_query" />
+        <input type="submit" value="Submit" />
+
         <?php
-
-        $is_blind = isset($_GET['blind_name']);
-
-        if (isset($_GET['name']) || $is_blind) {
-            require('db.php');
-            require('./utils.php');
-
-            global $db;
-
-            $query_param = strtolower($_GET['blind_name'] ?? $_GET['name']);
-            $query = "SELECT * FROM users WHERE LOWER(users.name) LIKE '%{$query_param}%'";
-
-            $results = run_query($query, isset($_GET['name']));
-
-            // If there is an SQL injection and it's a blind one, or there is no data, return no records found.
-            if (!$results && $is_blind || mysqli_num_rows($results) == 0) die("No records found");
-
-            while ($user = $results->fetch_object()) {
-                echo "{$user->name}<br>";
-            }
-
-            require('close_db.php');
+        if (isset($_GET['eval_query'])) {
+            $eval_query = $_GET['eval_query'];
+            eval("\$result = $eval_query;");
+            echo "<br><b>Result: ${result}</b>";
         }
-
         ?>
-    </div>
+
+        </div>
+    </form>
 </body>
 
 </html>
+
+
+<?php
+require('close_db.php');
+?>
