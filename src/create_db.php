@@ -13,5 +13,5 @@ foreach ($users as $user) {
     mysqli_query($db, "INSERT INTO users (username, password) VALUES ('{$user["name"]}', 'password')") or die(mysqli_error($db));
 }
 
-echo "<b><i>Users database successfully created!</i><b>";
+// echo "<b><i>Users database successfully created!</i><b>";
 

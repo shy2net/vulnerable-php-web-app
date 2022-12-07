@@ -5,8 +5,14 @@ if (isset($_GET['redirect_query'])) {
     die("Redirect should be happening here");
 }
 
-require('db.php');
-require('./utils.php');
+require_once('db.php');
+require_once('./utils.php');
+
+if (isset($_POST['reset_database'])) {
+    run_query("DROP TABLE users, comments");
+    die("Database has been cleared");
+}
+
 ?>
 
 <html>
@@ -51,7 +57,7 @@ require('./utils.php');
 
     <div>
         This is a simple web app which contains SQL injections and code execution,
-        it is based on PHP with Mysql.
+        it is based on PHP with Mysql.<br>
     </div>
 
 
@@ -60,15 +66,15 @@ require('./utils.php');
     Want to check for ping? <a href="run_ping.php">Run ping</a>
 
     <hr style="margin-bottom: 20px;">
-    <h3>Content Injection (Using eval)</h3>
+    <h3>Content Injection</h3>
     Enter the comments page that has content injection vulnerability.
     <p><a href="comments.php">Go to Comments page</a>
         <hr style="margin-bottom: 20px;">
     <h3>PHP Input wrapper injection</h3>
-    This will generate a new user parsed from a JSON structure using php://input 
+    This will generate a new user parsed from a JSON structure using php://input
     <p><a href="php_input_wrapper.php">Create new user</a>
 
-    <hr style="margin-bottom: 20px;">
+        <hr style="margin-bottom: 20px;">
 
     <h3>Authentication bypass (using MySQL)</h3>
     Login with any users you find in this database and password: "password" <p><a href="login.php">Go to Login page</a>
@@ -112,7 +118,7 @@ require('./utils.php');
     <hr style="margin-bottom: 20px;">
 
     <form method="GET" style="margin-top: 15px;">
-        <h3>Code Injection</h3>
+        <h3>Code Injection (using eval)</h3>
 
         Enter a simple calculation (for example: 5+6):
         <input type="text" name="eval_query" />
@@ -138,6 +144,10 @@ require('./utils.php');
         <input type="text" name="redirect_query" />
         <input type="submit" value="Submit" />
     </form>
+
+    <hr style="margin-bottom: 15px;">
+    <h3>Clear the entire database:</h3>
+    <form method="POST"><input name="reset_database" type="submit" value="Reset the database" /></form>
 </body>
 
 </html>
