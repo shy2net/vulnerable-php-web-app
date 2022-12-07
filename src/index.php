@@ -63,6 +63,10 @@ require('./utils.php');
     <h3>Content Injection (Using eval)</h3>
     Enter the comments page that has content injection vulnerability.
     <p><a href="comments.php">Go to Comments page</a>
+        <hr style="margin-bottom: 20px;">
+    <h3>PHP Input wrapper injection</h3>
+    This will generate a new user parsed from a JSON structure using php://input 
+    <p><a href="php_input_wrapper.php">Create new user</a>
 
     <hr style="margin-bottom: 20px;">
 
