@@ -3,6 +3,7 @@
 global $db;
 
 mysqli_query($db, 'DROP TABLE users');
+mysqli_query($db, 'CREATE TABLE comments (content varchar(255))');
 mysqli_query($db, 'CREATE TABLE users (username varchar(255), password varchar(255))');
 
 $users_json_api = 'https://jsonplaceholder.typicode.com/users';

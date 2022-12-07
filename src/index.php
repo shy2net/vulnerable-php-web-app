@@ -11,6 +11,39 @@ require('./utils.php');
 
 <html>
 
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        a {
+            color: #1e90ff;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            margin-top: 10px;
+            font-size: 14px;
+            background-color: #333;
+            color: white;
+        }
+
+        input[type="submit"] {
+            background-color: #1e90ff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
 <body>
     <h3>
         Simple vulnerable webapp
@@ -27,11 +60,16 @@ require('./utils.php');
     Want to check for ping? <a href="run_ping.php">Run ping</a>
 
     <hr style="margin-bottom: 20px;">
-
-    <h3>Authentication bypass</h3>
-    Login with any users you find in this database and password: "password" <p><a href="login.php">Go to Login page</a>
+    <h3>Content Injection (Using eval)</h3>
+    Enter the comments page that has content injection vulnerability.
+    <p><a href="comments.php">Go to Comments page</a>
 
     <hr style="margin-bottom: 20px;">
+
+    <h3>Authentication bypass (using MySQL)</h3>
+    Login with any users you find in this database and password: "password" <p><a href="login.php">Go to Login page</a>
+
+        <hr style="margin-bottom: 20px;">
 
     <form method="GET" style="margin-top: 15px;">
         <h3>Search for users (SQL Injection)</h3>
