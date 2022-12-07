@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <name>Apple</name>
+        <price>$1.00</price>
+    </product>
+    <product>
+        <name>Orange</name>
+        <price>$1.50</price>
+    </product>
+    <product>
+        <name>Banana</name>
+        <price>$0.50</price>
+    </product>
+    <product>
+        <name>Grape</name>
+        <price>$2.00</price>
+    </product>
+    <product>
+        <name>Strawberry</name>
+        <price>$2.50</price>
+    </product>
+</products>
