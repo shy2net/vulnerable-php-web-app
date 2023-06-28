@@ -11,6 +11,7 @@ This project comes with the following vulnerabilities:
 - Code Injection
 - Authentication bypass injection (using SQL)
 - Content injection
+- SSRF and LFI (Local file inclusion)
 
 ## How to run this project
 

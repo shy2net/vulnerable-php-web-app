@@ -153,6 +153,20 @@ if (isset($_POST['reset_database'])) {
                 </form>
             </div>
         </div>
+
+        <div class="section">
+            <div class="section-content">
+                <form method="GET" action="get_contents.php" style="margin-top: 15px;">
+                    <h3>Get site\file contents (SSRF\LFI)</h3>
+
+                    Enter a path\url you would like to get their contents:
+                    <p>
+                        <input type="text" name="url" />
+                        <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+
         <div class="section">
             <div class="section-content">
                 <h3>Clear the entire database:</h3>
